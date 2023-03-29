@@ -3,6 +3,7 @@ package nl.codecontrol.rest;
 import nl.codecontrol.model.Photo;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
+import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.Collection;
@@ -51,7 +52,7 @@ public class PhotozResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Photo create(Photo photo) {
+    public Photo create(@Valid Photo photo) {
         long id = db.keySet().stream().max(Long::compare).get() + 1;
         photo.setId(id);
         db.put(photo.getId(), photo);
