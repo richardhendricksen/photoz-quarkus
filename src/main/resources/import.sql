@@ -1,5 +1,6 @@
--- This file allow to write SQL commands that will be emitted in test and dev.
--- The commands are commented as their support depends of the database
--- insert into myentity (id, field) values(nextval('hibernate_sequence'), 'field-1');
--- insert into myentity (id, field) values(nextval('hibernate_sequence'), 'field-2');
--- insert into myentity (id, field) values(nextval('hibernate_sequence'), 'field-3');
+create table if not exists photoz (
+    id identity primary key,
+    file_name varchar(255),
+    content_type varchar(255),
+    data binary (50000000)
+    );

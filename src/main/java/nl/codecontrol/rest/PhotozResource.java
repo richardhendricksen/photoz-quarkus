@@ -44,13 +44,8 @@ public class PhotozResource {
     @DELETE
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Photo delete(@PathParam("id") long id) {
-        final Photo photo = photozController.deletePhoto(id);
-        if (isNull(photo)) {
-            throw new NotFoundException("Unknown photo: %s".formatted(id));
-        }
-
-        return photo;
+    public void delete(@PathParam("id") long id) {
+        photozController.deletePhoto(id);
     }
 
     @POST

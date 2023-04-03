@@ -23,8 +23,8 @@ public class PhotozController {
         return photozService.getPhoto(id);
     }
 
-    public Photo deletePhoto(long id) {
-        return photozService.deletePhoto(id);
+    public void deletePhoto(long id) {
+        photozService.deletePhoto(id);
     }
 
     public Photo addPhoto(String fileName, MediaType contentType, byte[] data) {
