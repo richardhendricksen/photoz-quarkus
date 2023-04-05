@@ -11,7 +11,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.Collection;
 
 @ApplicationScoped
-@RequiredArgsConstructor(access= AccessLevel.PROTECTED)
+@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 public class PhotozService {
 
     private final PhotoRepository photoRepository;
@@ -31,10 +31,10 @@ public class PhotozService {
     @Transactional
     public Photo addPhoto(String fileName, MediaType contentType, byte[] data) {
         final var photo = Photo.builder()
-                .fileName(fileName)
-                .data(data)
-                .contentType(contentType.toString())
-                .build();
+            .fileName(fileName)
+            .data(data)
+            .contentType(contentType.toString())
+            .build();
 
         photoRepository.persist(photo);
 

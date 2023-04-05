@@ -7,4 +7,6 @@ import javax.validation.constraints.NotNull;
 import javax.ws.rs.core.MediaType;
 
 @Builder
-public record PhotoDto (long id, @NotNull String fileName, @NotNull @JsonIgnore byte[] data, @NotNull MediaType contentType) {}
+public record PhotoDto(long id, @NotNull String fileName, @NotNull @JsonIgnore byte[] data,
+                       @NotNull MediaType contentType) {
+}

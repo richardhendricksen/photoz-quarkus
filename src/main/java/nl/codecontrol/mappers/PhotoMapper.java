@@ -11,10 +11,10 @@ public class PhotoMapper {
 
     public PhotoDto toDto(final Photo photo) {
         return PhotoDto.builder()
-                .id(photo.getId())
-                .fileName(photo.getFileName())
-                .contentType(MediaType.valueOf(photo.getContentType()))
-                .data(photo.getData())
-                .build();
+            .id(photo.getId())
+            .fileName(photo.getFileName())
+            .contentType(MediaType.valueOf(photo.getContentType()))
+            .data(photo.getData())
+            .build();
     }
 }

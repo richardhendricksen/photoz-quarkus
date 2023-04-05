@@ -32,8 +32,8 @@ public class DownloadResource {
         }
 
         return Response.ok(photo.data())
-                .type(photo.contentType())
-                .header(CONTENT_DISPOSITION, "attachment;filename=" + photo.fileName())
-                .build();
+            .type(photo.contentType())
+            .header(CONTENT_DISPOSITION, "attachment;filename=" + photo.fileName())
+            .build();
     }
 }

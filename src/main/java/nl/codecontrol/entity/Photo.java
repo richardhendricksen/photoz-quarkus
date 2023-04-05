@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 @Builder
 @Entity
 @EqualsAndHashCode(callSuper = false)
-@Table(name="PHOTOZ")
+@Table(name = "PHOTOZ")
 public class Photo extends PanacheEntity {
 
     private Long id;
