@@ -1,4 +1,4 @@
-package nl.codecontrol.model;
+package nl.codecontrol.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;

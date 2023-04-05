@@ -31,9 +31,9 @@ public class DownloadResource {
             throw new NotFoundException("Unknown photo: %s".formatted(id));
         }
 
-        return Response.ok(photo.getData())
-                .type(photo.getContentType())
-                .header(CONTENT_DISPOSITION, "attachment;filename=" + photo.getFileName())
+        return Response.ok(photo.data())
+                .type(photo.contentType())
+                .header(CONTENT_DISPOSITION, "attachment;filename=" + photo.fileName())
                 .build();
     }
 }

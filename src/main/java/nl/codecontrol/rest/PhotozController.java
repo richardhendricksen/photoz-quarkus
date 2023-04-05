@@ -2,32 +2,34 @@ package nl.codecontrol.rest;
 
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
-import nl.codecontrol.model.Photo;
+import nl.codecontrol.mappers.PhotoMapper;
+import nl.codecontrol.model.PhotoDto;
 import nl.codecontrol.services.PhotozService;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.core.MediaType;
-import java.util.Collection;
+import java.util.List;
 
 @ApplicationScoped
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 public class PhotozController {
 
     private final PhotozService photozService;
+    private final PhotoMapper photoMapper;
 
-    public Collection<Photo> getPhotos() {
-        return photozService.getPhotos();
+    public List<PhotoDto> getPhotos() {
+        return photozService.getPhotos().stream().map(photoMapper::toDto).toList();
     }
 
-    public Photo getPhoto(final long id) {
-        return photozService.getPhoto(id);
+    public PhotoDto getPhoto(final long id) {
+        return photoMapper.toDto(photozService.getPhoto(id));
     }
 
     public void deletePhoto(long id) {
         photozService.deletePhoto(id);
     }
 
-    public Photo addPhoto(String fileName, MediaType contentType, byte[] data) {
-        return photozService.addPhoto(fileName, contentType, data);
+    public PhotoDto addPhoto(String fileName, MediaType contentType, byte[] data) {
+        return photoMapper.toDto(photozService.addPhoto(fileName, contentType, data));
     }
 }

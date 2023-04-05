@@ -2,7 +2,7 @@ package nl.codecontrol.services;
 
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
-import nl.codecontrol.model.Photo;
+import nl.codecontrol.entity.Photo;
 import nl.codecontrol.repository.PhotoRepository;
 
 import javax.enterprise.context.ApplicationScoped;
