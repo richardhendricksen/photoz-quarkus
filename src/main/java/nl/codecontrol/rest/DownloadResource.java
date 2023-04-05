@@ -2,7 +2,6 @@ package nl.codecontrol.rest;
 
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
-import nl.codecontrol.model.Photo;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -14,6 +13,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import static java.util.Objects.isNull;
+import static javax.ws.rs.core.HttpHeaders.CONTENT_DISPOSITION;
 
 @Path("/download")
 @ApplicationScoped
@@ -26,13 +26,14 @@ public class DownloadResource {
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
     public Response download(@PathParam("id") long id) {
-        final Photo photo = photozController.getPhoto(id);
+        final var photo = photozController.getPhoto(id);
         if (isNull(photo)) {
             throw new NotFoundException("Unknown photo: %s".formatted(id));
         }
 
-        Response.ResponseBuilder response = Response.ok(photo.getData());
-        response.header("Content-Disposition", "attachment;filename=" + photo.getFileName());
-        return response.build();
+        return Response.ok(photo.getData())
+                .type(photo.getContentType())
+                .header(CONTENT_DISPOSITION, "attachment;filename=" + photo.getFileName())
+                .build();
     }
 }
